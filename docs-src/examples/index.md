@@ -1,20 +1,19 @@
 ---
 layout: example.11ty.cjs
-title: <my-element> ⌲ Examples ⌲ Basic
+title: <star-rating> ⌲ Examples ⌲ Basic
 tags: example
 name: Basic
 description: A basic example
 ---
 
 <style>
-  my-element p {
+  star-rating p {
     border: solid 1px blue;
     padding: 8px;
   }
 </style>
-<my-element>
-  <p>This is child content</p>
-</my-element>
+<star-rating>
+</star-rating>
 
 <h3>CSS</h3>
 
@@ -28,7 +27,5 @@ p {
 <h3>HTML</h3>
 
 ```html
-<my-element>
-  <p>This is child content</p>
-</my-element>
+<star-rating> </star-rating>
 ```
