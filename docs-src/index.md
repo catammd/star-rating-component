@@ -70,7 +70,7 @@ render(
   <div>
 
 <h2>This is a &lt;star-rating&gt;</h2>
-<star-rating name="lit-html"></star-rating>
+  <star-rating label="Rating" precision="0.5" value="3"></star-rating>
 
   </div>
 </section>
