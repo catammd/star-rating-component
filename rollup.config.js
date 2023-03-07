@@ -10,7 +10,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 
 export default {
-  input: './dist/src/star-rating.js',
+  input: 'star-rating.js',
   output: {
     file: 'star-rating.bundled.js',
     format: 'esm',

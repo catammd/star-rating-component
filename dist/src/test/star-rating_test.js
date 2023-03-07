@@ -3,16 +3,16 @@
  * Copyright 2021 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-import { MyElement } from '../my-element.js';
+import { StarRating } from '../star-rating';
 import { fixture, assert } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-suite('my-element', () => {
+suite('star-rating', () => {
     test('is defined', () => {
-        const el = document.createElement('my-element');
-        assert.instanceOf(el, MyElement);
+        const el = document.createElement('star-rating');
+        assert.instanceOf(el, StarRating);
     });
     test('renders with default values', async () => {
-        const el = await fixture(html `<my-element></my-element>`);
+        const el = await fixture(html `<star-rating></star-rating>`);
         assert.shadowDom.equal(el, `
       <h1>Hello, World!</h1>
       <button part="button">Click Count: 0</button>
@@ -20,7 +20,7 @@ suite('my-element', () => {
     `);
     });
     test('renders with a set name', async () => {
-        const el = await fixture(html `<my-element name="Test"></my-element>`);
+        const el = await fixture(html `<star-rating name="Test"></star-rating>`);
         assert.shadowDom.equal(el, `
       <h1>Hello, Test!</h1>
       <button part="button">Click Count: 0</button>
@@ -28,7 +28,7 @@ suite('my-element', () => {
     `);
     });
     test('handles a click', async () => {
-        const el = (await fixture(html `<my-element></my-element>`));
+        const el = (await fixture(html `<star-rating></star-rating>`));
         const button = el.shadowRoot.querySelector('button');
         button.click();
         await el.updateComplete;
@@ -39,9 +39,9 @@ suite('my-element', () => {
     `);
     });
     test('styling applied', async () => {
-        const el = (await fixture(html `<my-element></my-element>`));
+        const el = (await fixture(html `<star-rating></star-rating>`));
         await el.updateComplete;
         assert.equal(getComputedStyle(el).paddingTop, '16px');
     });
 });
-//# sourceMappingURL=my-element_test.js.map
+//# sourceMappingURL=star-rating_test.js.map

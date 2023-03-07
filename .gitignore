@@ -1,6 +1,11 @@
 /node_modules/
-/dist/
+/lib/
+/test/
 custom-elements.json
-
+# top level source
+star-rating.js
+star-rating.js.map
+star-rating.d.ts
+star-rating.d.ts.map
 # only generated for size check
 star-rating.bundled.js
