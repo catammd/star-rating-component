@@ -8,7 +8,8 @@
     <title><star-rating> ⌲ Home</title>
     <link rel="stylesheet" href="docs.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600|Roboto+Mono">
-    <link href="webcomponents-loader.js"></script>
+    <link href="prism-okaidia.css" rel="stylesheet" />
+    <script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="/node_modules/lit/polyfill-support.js"></script>
     <script type="module" src="star-rating.bundled.js"></script>
   </head>
@@ -28,7 +29,7 @@
     <div id="main-wrapper">
       <main>
         <h1>&lt;star-rating&gt;</h1>
-<p><code>&lt;star-rating&gt;</code> is an awesome element. It's a great introduction to building web components with LitElement, with nice documentation site as well.</p>
+<p><code>&lt;star-rating&gt;</code> is an awesome webcomponent. It's a great introduction to building web components with LitElement, with nice documentation site as well.</p>
 <h2>As easy as HTML</h2>
 <section class="columns">
   <div>
@@ -39,25 +40,72 @@
 <p><star-rating></star-rating></p>
   </div>
 </section>
-<h2>Configure with attributes</h2>
+<h2>Support for custom states</h2>
 <section class="columns">
   <div>
-<p><code>&lt;star-rating&gt;</code> can be configured with attributed in plain HTML.</p>
-<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>star-rating</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>HTML<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>star-rating</span><span class="token punctuation">></span></span></code></pre>
+<p><code>&lt;star-rating&gt;</code> can have active/hover or focused or disabled states.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>star-rating</span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Rating<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>star-rating</span><span class="token punctuation">></span></span></code></pre>
   </div>
   <div>
-<p><star-rating name="HTML"></star-rating></p>
+<p>Inactive, hover</p>
+<star-rating precision="0.5" value="3"></star-rating><br>
+<p>Focus</p>
+<star-rating precision="0.5" value="1.5" id="hasFocus"></star-rating><br>
+<p>Disabled</p>  
+<star-rating precision="0.5" value="3" style="--star-color-active: #6e6e6e"disabled></star-rating><br>
+ <script>
+      window.onload = function () {
+        var input = document.getElementById("hasFocus").focus();
+      };
+    </script>
   </div>
 </section>
-<h2>Declarative rendering</h2>
+<h2>Built with accesibility in mind</h2>
 <section class="columns">
   <div>
-<p><code>&lt;star-rating&gt;</code> can be used with declarative rendering libraries like Angular, React, Vue, and lit-html</p>
-<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>html<span class="token punctuation">,</span> render<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'lit-html'</span><span class="token punctuation">;</span><br><br><span class="token keyword">const</span> name <span class="token operator">=</span> <span class="token string">'lit-html'</span><span class="token punctuation">;</span><br><br><span class="token function">render</span><span class="token punctuation">(</span><br>  html<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"><br>    &lt;h2>This is a &amp;lt;star-rating&amp;gt;&lt;/h2><br>    &lt;star-rating .name=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">>&lt;/star-rating><br>  </span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span><br>  document<span class="token punctuation">.</span>body<br><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><code>&lt;star-rating&gt;</code> accepts label attributes so you should always set a label to provide necessary info for assistive devices.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>star-rating</span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Rate this product<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>star-rating</span><span class="token punctuation">></span></span></code></pre>
   </div>
   <div>
-<h2>This is a &lt;star-rating&gt;</h2>
-  <star-rating label="Rating" precision="0.5" value="3"></star-rating>
+</section>
+<section class="columns">
+  <div>
+<p><code>&lt;star-rating&gt;</code> has support for both mouse and keyboard navigation</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>star-rating</span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Rating<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>star-rating</span><span class="token punctuation">></span></span></code></pre>
+  </div>
+  <div>
+<p>Use left(&#8592;) and right(&#8594;) or up(&#8593;) and down(&#8595;) keys to create a rating</p>
+<star-rating precision="0.5" value="0"></star-rating><br>
+  </div>
+</section>
+<h2>Support for custom precision</h2>
+<section class="columns">
+  <div>
+<p><code>&lt;star-rating&gt;</code> can be configured with attributes to specific precision, value, size and colors.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>star-rating</span> <span class="token attr-name">precision</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0.5<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>star-rating</span><span class="token punctuation">></span></span></code></pre>
+  </div>
+  <div>
+<p><star-rating precision="0.5" value="0"></star-rating><br>
+<star-rating precision="0.5" value="1.5"></star-rating><br>
+<star-rating precision="0.5" value="2"></star-rating><br>
+<star-rating precision="1" value="3"></star-rating><br>
+<star-rating precision="0.1" value="3.6"></star-rating><br>
+<star-rating precision="0.5" value="4.5"></star-rating></p>
+  </div>
+</section>
+<h2>Support for custom sizes</h2>
+<section class="columns">
+  <div>
+<p><code>&lt;star-rating&gt;</code> can be configured with to custom size via CSS variables.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>star-rating</span><br>  <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Rating<span class="token punctuation">"</span></span><br>  <span class="token attr-name">precision</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0.5<span class="token punctuation">"</span></span><br>  <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>3<span class="token punctuation">"</span></span><br>  <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">--star-size</span><span class="token punctuation">:</span> 16px</span><span class="token punctuation">"</span></span></span><br><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>star-rating</span><span class="token punctuation">></span></span></code></pre>
+  </div>
+  <div>
+<p>Large (L)</p>
+<star-rating precision="0.5" value="3"></star-rating><br>
+<p>Medium (M)</p>
+<star-rating precision="0.5" value="1.5" style="--star-size: 16px"></star-rating><br>
+<p>Small (S)</p>  
+<star-rating precision="0.5" value="3" style="--star-size: 12px"></star-rating><br>
   </div>
 </section>
 
