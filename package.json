@@ -19,7 +19,7 @@
     "docs:gen": "eleventy --config=.eleventy.cjs",
     "docs:gen:watch": "eleventy --config=.eleventy.cjs --watch",
     "docs:build": "rollup -c --file docs/star-rating.bundled.js",
-    "docs:assets": "cp node_modules/prismjs/themes/prism-okaidia.css docs/",
+    "docs:assets": "copy node_modules.\\prismjs\\themes\\prism-okaidia.css docs\\",
     "docs:serve": "wds --root-dir=docs --node-resolve --watch",
     "analyze": "cem analyze --litelement --globs \"src/**/*.ts\"",
     "analyze:watch": "cem analyze --litelement --globs \"src/**/*.ts\" --watch",
