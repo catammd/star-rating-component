@@ -35,25 +35,54 @@
     <div id="main-wrapper">
       <main>
         
-    <h1>Example: Name Property</h1>
+    <h1>Example: Display rating (non-interactive)</h1>
     <section class="examples">
       <nav class="collection">
         <ul>
           
                   <li class=>
-                    <a href="../">Create rating example</a>
+                    <a href="../">Interactive example</a>
                   </li>
                 
                   <li class=selected>
-                    <a href="">Setting the name property</a>
+                    <a href="">Display product rating</a>
                   </li>
                 
         </ul>
       </nav>
       <div>
-        <p><star-rating label="Rating"></star-rating></p>
-<h3>HTML</h3>
-<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>star-rating</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Earth<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>star-rating</span><span class="token punctuation">></span></span></code></pre>
+        <style>
+  .product-details{
+    display: flex;
+    flex-direction: column;
+  }
+  .product-example{
+    border: 1px solid rgb(224, 224, 224);
+    padding: 10px;
+    max-width: 342px;
+  }
+  .product-rating{
+    padding-top: 1rem;
+  }
+
+  h2{
+    font-weight: bold;
+    font-size: 16px;
+  }
+</style>
+<div class="product-example">
+  <div class="product-details">
+    <div class="product-image">
+    <img src="https://www.lego.com/cdn/cs/set/assets/blt00ba54004c17e820/10283.jpg?fit=bounds&format=jpg&quality=80&width=320&height=320&dpr=1?format=webply&fit=bounds&quality=80&width=400&height=400&dpr=2" />
+    </div>
+    <h2>NASA Space Shuttle Discovery</h2>
+    <div class="product-price">1599,00 kr.</div>
+    <div class="product-rating">
+        <star-rating  label="Rate this product" precision="0.1" style="--star-size: 1rem" max="5" value="4.3" readonly></star-rating>
+        <span><b>4.3</b> (53)</span>
+    </div>
+  </div>
+</div>
 
       </div>
     </section>

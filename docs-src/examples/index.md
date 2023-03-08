@@ -3,7 +3,7 @@ layout: example.11ty.cjs
 title: <star-rating> ⌲ Examples ⌲ Basic
 tags: example
 name: display rating value on hover
-description: Create rating example
+description: Interactive example
 ---
 
 <style>
