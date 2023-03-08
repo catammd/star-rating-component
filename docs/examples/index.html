@@ -7,11 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><star-rating> ⌲ Examples ⌲ Basic</title>
     <link rel="stylesheet" href="../docs.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600|Roboto+Mono">
+    <link rel="stylesheet" href="https://assets.lego.com/fonts/v1/cera-pro.css"/>
     <link href="../prism-okaidia.css" rel="stylesheet" />
     <script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="/node_modules/lit/polyfill-support.js"></script>
     <script type="module" src="../star-rating.bundled.js"></script>
+    <style>
+      html,
+      body {
+        font-family: "Cera Pro";
+      }
+    </style>
   </head>
   <body>
     
@@ -29,13 +35,13 @@
     <div id="main-wrapper">
       <main>
         
-    <h1>Example: Basic</h1>
+    <h1>Example: display rating value on hover</h1>
     <section class="examples">
       <nav class="collection">
         <ul>
           
                   <li class=selected>
-                    <a href="">A basic example</a>
+                    <a href="">Create rating example</a>
                   </li>
                 
                   <li class=>
@@ -50,13 +56,65 @@
     border: solid 1px blue;
     padding: 8px;
   }
+  .form-example{
+    background-color: whitesmoke;
+    border: 1px solid #ccc;
+    padding: 20px;
+  }
+  textarea{
+    width: 100%;
+    height: 100px;
+  }
+  .rating-hover {
+    display:flex;
+    justify-content: center;
+    position: relative;
+    width:220px;
+  }
+  .rating-hover span {
+    position: absolute;
+    top: -45px;
+    border-radius: 4px;
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 8px 12px;
+  }
+  .rating-hover span::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -8px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: #222 transparent transparent transparent;
+  }
+  .rating-hover span:empty {
+    display: none;
+  }
 </style>
-<star-rating>
-</star-rating>
-<h3>CSS</h3>
-<pre class="language-css"><code class="language-css"><span class="token selector">p</span> <span class="token punctuation">{</span><br>  <span class="token property">border</span><span class="token punctuation">:</span> solid 1px blue<span class="token punctuation">;</span><br>  <span class="token property">padding</span><span class="token punctuation">:</span> 8px<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
-<h3>HTML</h3>
-<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>star-rating</span><span class="token punctuation">></span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>star-rating</span><span class="token punctuation">></span></span></code></pre>
+<div class="form-example">
+  <h3>We've received your registration!</h3>
+  <p>We value your input and would appreciate if you took the time to rate your experience.</p>
+  <div class="rating-hover">
+    <star-rating  label="Rate this product" precision="0.5" style="--star-size: 2.5rem" max="5"></star-rating>
+    <span></span>
+  </div>
+  <p>Any additional comments?</p>
+  <textarea name='review' maxlength='100' placeholder='Enter your comments here'></textarea>
+</div>
+<script>
+  const rating = document.querySelector('.rating-hover > star-rating');
+  const span = rating.nextElementSibling;
+  rating.addEventListener('rating-hover', event => {
+  span.textContent = `${event.detail.value}/${rating.getAttribute("max")}`;
+  // Clear feedback when hovering stops
+      if (event.detail.phase === 'end') {
+        span.textContent = '';
+      }
+  });
+</script>
 
       </div>
     </section>
