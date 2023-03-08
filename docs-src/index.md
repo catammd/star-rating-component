@@ -26,31 +26,25 @@ title: <star-rating> ⌲ Home
   </div>
 </section>
 
-## Support for custom states
+## Support for readonly and disabled states
 
 <section class="columns">
   <div>
 
-`<star-rating>` can have active/hover or focused or disabled states.
+`<star-rating>` can have readonly and disabled states.
 
 ```html
-<star-rating label="Rating"></star-rating>
+<star-rating label="Rating" readonly></star-rating>
 ```
 
   </div>
   <div>
-
-<p>Inactive, hover</p>
-<star-rating precision="0.5" value="3"></star-rating><br>
-<p>Focus</p>
-<star-rating precision="0.5" value="1.5" id="hasFocus"></star-rating><br>
-<p>Disabled</p>  
-<star-rating precision="0.5" value="3" style="--star-color-active: #6e6e6e"disabled></star-rating><br>
- <script>
-      window.onload = function () {
-        var input = document.getElementById("hasFocus").focus();
-      };
-    </script>
+    <p>Inactive, hover</p>
+    <star-rating precision="0.5" value="3"></star-rating><br>
+    <p>Readonly</p>
+    <star-rating precision="0.5" value="1.5" readonly></star-rating><br>
+    <p>Disabled</p>  
+    <star-rating precision="0.5" value="3" style="--star-color-active: #6e6e6e"disabled></star-rating><br> 
   </div>
 </section>
 

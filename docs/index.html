@@ -46,24 +46,19 @@
 <p><star-rating></star-rating></p>
   </div>
 </section>
-<h2>Support for custom states</h2>
+<h2>Support for readonly and disabled states</h2>
 <section class="columns">
   <div>
-<p><code>&lt;star-rating&gt;</code> can have active/hover or focused or disabled states.</p>
-<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>star-rating</span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Rating<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>star-rating</span><span class="token punctuation">></span></span></code></pre>
+<p><code>&lt;star-rating&gt;</code> can have readonly and disabled states.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>star-rating</span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Rating<span class="token punctuation">"</span></span> <span class="token attr-name">readonly</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>star-rating</span><span class="token punctuation">></span></span></code></pre>
   </div>
   <div>
-<p>Inactive, hover</p>
-<star-rating precision="0.5" value="3"></star-rating><br>
-<p>Focus</p>
-<star-rating precision="0.5" value="1.5" id="hasFocus"></star-rating><br>
-<p>Disabled</p>  
-<star-rating precision="0.5" value="3" style="--star-color-active: #6e6e6e"disabled></star-rating><br>
- <script>
-      window.onload = function () {
-        var input = document.getElementById("hasFocus").focus();
-      };
-    </script>
+    <p>Inactive, hover</p>
+    <star-rating precision="0.5" value="3"></star-rating><br>
+    <p>Readonly</p>
+    <star-rating precision="0.5" value="1.5" readonly></star-rating><br>
+    <p>Disabled</p>  
+    <star-rating precision="0.5" value="3" style="--star-color-active: #6e6e6e"disabled></star-rating><br> 
   </div>
 </section>
 <h2>Built with accesibility in mind</h2>
