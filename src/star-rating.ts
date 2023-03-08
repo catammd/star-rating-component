@@ -170,7 +170,7 @@ export class StarRating extends LitElement {
     }
 
     this.setValue(this.getValueFromMousePosition(event));
-    this.dispatchEvent(new CustomEvent('sl-change'));
+    this.dispatchEvent(new CustomEvent('rating-change'));
   }
 
   private setValue(newValue: number) {
@@ -215,7 +215,7 @@ export class StarRating extends LitElement {
     }
 
     if (this.value !== oldValue) {
-      this.dispatchEvent(new CustomEvent('rating-value-change'));
+      this.dispatchEvent(new CustomEvent('rating-change'));
     }
   }
   private handleMouseEnter(event: MouseEvent) {
@@ -229,6 +229,27 @@ export class StarRating extends LitElement {
 
   private handleMouseLeave() {
     this.isHovering = false;
+  }
+
+  private getValueFromTouchPosition(event: TouchEvent) {
+    return this.getValueFromXCoordinate(event.touches[0].clientX);
+  }
+
+  private handleTouchStart(event: TouchEvent) {
+    this.isHovering = true;
+    this.hoverValue = this.getValueFromTouchPosition(event);
+    event.preventDefault(); // Prevent scrolling when touch is initiated
+  }
+
+  private handleTouchMove(event: TouchEvent) {
+    this.hoverValue = this.getValueFromTouchPosition(event);
+  }
+
+  private handleTouchEnd(event: TouchEvent) {
+    this.isHovering = false;
+    this.setValue(this.hoverValue);
+    this.dispatchEvent(new CustomEvent('rating-change'));
+    event.preventDefault(); // Prevent click on mobile devices
   }
 
   @watch('hoverValue')
@@ -290,8 +311,11 @@ export class StarRating extends LitElement {
       @click=${this.handleClick}
       @keydown=${this.handleKeyDown}
       @mouseenter=${this.handleMouseEnter}
+      @touchstart=${this.handleTouchStart}
       @mouseleave=${this.handleMouseLeave}
+      @touchend=${this.handleTouchEnd}
       @mousemove=${this.handleMouseMove}
+      @touchmove=${this.handleTouchMove}
     >
       <span class="rating__symbols rating__symbols--inactive">
         ${counter.map((index) => {
