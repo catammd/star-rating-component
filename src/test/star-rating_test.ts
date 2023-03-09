@@ -7,6 +7,7 @@
 import {StarRating} from '../star-rating';
 
 import {assert, expect, fixture} from '@open-wc/testing';
+import {sendKeys} from '@web/test-runner-commands';
 import {html} from 'lit/static-html.js';
 
 suite('star-rating', () => {
@@ -60,6 +61,104 @@ suite('star-rating', () => {
 
     expect(base.getAttribute('aria-disabled')).to.equal('true');
     expect(base.getAttribute('class')).to.equal(' rating rating--disabled ');
+  });
+
+  test('should increase value when using the right arrow on the keyboard', async () => {
+    const el = await fixture<StarRating>(html` <star-rating></star-rating> `);
+
+    el.focus();
+    await el.updateComplete;
+    await sendKeys({press: 'ArrowRight'});
+    await el.updateComplete;
+
+    expect(el.value).to.equal(1);
+  });
+
+  test('should increase value when using the up arrow on the keyboard', async () => {
+    const el = await fixture<StarRating>(html` <star-rating></star-rating> `);
+
+    el.focus();
+    await el.updateComplete;
+    await sendKeys({press: 'ArrowUp'});
+    await el.updateComplete;
+
+    expect(el.value).to.equal(1);
+  });
+
+  test('should remove rating value when using the Home button on the keyboard', async () => {
+    const el = await fixture<StarRating>(
+      html` <star-rating value="3"></star-rating> `
+    );
+
+    el.focus();
+    await el.updateComplete;
+    await sendKeys({press: 'Home'});
+    await el.updateComplete;
+
+    expect(el.value).to.equal(0);
+  });
+
+  test('should increase value with half step precision when using the right arrow on the keyboard', async () => {
+    const el = await fixture<StarRating>(
+      html` <star-rating precision="0.5"></star-rating> `
+    );
+
+    el.focus();
+    await el.updateComplete;
+    await sendKeys({press: 'ArrowRight'});
+    await el.updateComplete;
+
+    expect(el.value).to.equal(0.5);
+  });
+
+  test('should decrease value when using the left arrow on the keyboard', async () => {
+    const el = await fixture<StarRating>(
+      html` <star-rating value="3"></star-rating> `
+    );
+
+    el.focus();
+    await el.updateComplete;
+    await sendKeys({press: 'ArrowLeft'});
+    await el.updateComplete;
+
+    expect(el.value).to.equal(2);
+  });
+
+  test('should decrease value when using the down arrow on the keyboard', async () => {
+    const el = await fixture<StarRating>(
+      html` <star-rating value="3"></star-rating> `
+    );
+
+    el.focus();
+    await el.updateComplete;
+    await sendKeys({press: 'ArrowDown'});
+    await el.updateComplete;
+
+    expect(el.value).to.equal(2);
+  });
+
+  test('should set rating value to max when using the End key on the keyboard', async () => {
+    const el = await fixture<StarRating>(html` <star-rating></star-rating> `);
+
+    el.focus();
+    await el.updateComplete;
+    await sendKeys({press: 'End'});
+    await el.updateComplete;
+
+    expect(el.value).to.equal(5);
+  });
+
+  test('should decrease value with half step precision when using the lef arrow on the keyboard', async () => {
+    const el = await fixture<StarRating>(
+      html` <star-rating precision="0.5" value="3"></star-rating> `
+    );
+
+    el.focus();
+    await el.updateComplete;
+    await sendKeys({press: 'ArrowLeft'});
+    await el.updateComplete;
+
+    expect(el.value).to.equal(2.5);
   });
 
   test('should set focus state on inner div', async () => {
